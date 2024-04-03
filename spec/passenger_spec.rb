@@ -20,8 +20,10 @@ RSpec.describe Passenger do
 
     it "can return an age" do
       passenger_1 = Passenger.new({"name" => "Charlie", "age" => 18})
+      passenger_2 = Passenger.new({"name" => "Taylor", "age" => 12})
 
       expect(passenger_1.age).to eq(18)
+      expect(passenger_2.age).to eq(12)
     end
 
     it "can determine an adult" do
@@ -32,15 +34,20 @@ RSpec.describe Passenger do
       expect(passenger_2.adult?).to be(false)
     end
 
-    it "can make a passenger over 18 a driver " do
-      passenger_1 = Passenger.new({"name" => "Charlie", "age" => 18})
+    it "can determine a driver" do
+      passenger_1 = Passenger.new({"name" => "Charlie", "age" => 18}) 
       passenger_2 = Passenger.new({"name" => "Taylor", "age" => 12})
 
       expect(passenger_1.driver?).to be(false)
       expect(passenger_2.driver?).to be(false)
+    end
 
-      passenger_1.driver
-      passenger_2.driver
+    it "can make a driver " do
+      passenger_1 = Passenger.new({"name" => "Charlie", "age" => 18})
+      passenger_2 = Passenger.new({"name" => "Taylor", "age" => 12})
+
+      passenger_1.drive
+      passenger_2.drive
 
       expect(passenger_1.driver?).to be(true)
       expect(passenger_2.driver?).to be(false)
